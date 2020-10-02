@@ -5,9 +5,6 @@ import { KlasaClientOptions } from 'klasa';
 import { join } from 'path';
 
 export const rootFolder = join(__dirname, '..', '..', '..');
-export const assetsFolder = join(rootFolder, 'assets');
-export const socialFolder = join(assetsFolder, 'images', 'social');
-export const cdnFolder = DEV ? join(assetsFolder, 'public') : join('/var', 'www', 'skyra.pw', 'cdn');
 
 export const ZeroWidhSpace = '\u200B';
 
@@ -18,18 +15,6 @@ export const enum Time {
 	Hour = 1000 * 60 * 60,
 	Day = 1000 * 60 * 60 * 24,
 	Year = 1000 * 60 * 60 * 24 * 365
-}
-
-export const enum BrawlStarsEmojis {
-	Trophy = '<:bstrophy:742083351891935353>',
-	PowerPlay = '<:powerplay:746370227377405993>',
-	RoboRumble = '<:bsroborumble:742086199065182269>',
-	BossFight = '<:bsbossfight:742087586788540427>',
-	Exp = '<:bsxp:743434002139971636>',
-	GemGrab = '<:bsgemgrab:743430818780676137>',
-	SoloShowdown = '<:bssoloshowdown:743431454557732955>',
-	DuoShowdown = '<:bsduoshowdown:743431564674990151>',
-	ChampionshipChallenge = '<:bschallenge:746373277726801971>'
 }
 
 export const enum Emojis {
