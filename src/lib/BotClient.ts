@@ -42,7 +42,6 @@ import './schemas/Guilds';
 
 // Import setup files
 import './setup/PermissionsLevels';
-import './setup/Canvas';
 import { InviteStore } from './structures/InviteStore';
 import { WebsocketHandler } from './websocket/WebsocketHandler';
 

@@ -27,10 +27,3 @@ export const enum Colors {
 	Yellow = 0xffeb3b,
 	Yellow300 = 0xfff176
 }
-
-export const enum CanvasColors {
-	BackgroundLight = '#FAFAFA',
-	BackgroundDark = '#212121',
-	IndicatorGreen = '#4CAF50',
-	IndicatorRed = '#F44336'
-}
