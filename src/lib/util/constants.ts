@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import { Colors } from '@lib/types/constants/Constants';
-import { DEV } from '@root/config';
 import { KlasaClientOptions } from 'klasa';
 import { join } from 'path';
 
