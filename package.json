@@ -1,0 +1,169 @@
+{
+	"name": "bot",
+	"version": "5.4.1",
+	"description": "No description for this currently.",
+	"main": "dist/Skyra.js",
+	"scripts": {
+		"pm2:delete": "pm2 delete Bot",
+		"pm2:logs": "pm2 logs Bot --lines=200",
+		"pm2:restart": "pm2 restart Bot",
+		"pm2:start": "pm2 start pm2.ecosystem.yml",
+		"pm2:dev": "yarn pm2:start --env development",
+		"pm2:stop": "pm2 stop Skyra",
+		"start": "node dist/Skyra.js",
+		"lint": "eslint --fix src tests --ext ts",
+		"format": "prettier --write --loglevel=warn \"src/**/*.ts\"",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"update": "yarn upgrade-interactive --latest",
+		"build": "tsc -b src",
+		"clean": "tsc -b src --clean",
+		"scripts:tlds": "node scripts/tlds.mjs",
+		"scripts:migration": "node scripts/migrations.mjs",
+		"watch": "tsc -b src -w",
+		"dev": "yarn build && yarn start",
+		"dockerps": "pwsh -NoLogo ./docker/control.ps1",
+		"typeorm": "node -r module-alias/register ./node_modules/typeorm/cli.js",
+		"typeorm:schema:resync": "docker container rm -f pgsql && docker volume rm postgres-data && docker volume create postgres-data && docker-compose -p skyra -f ./docker/docker-compose.yml up -d postgres && sleep 3 && yarn typeorm schema:sync"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skyra-project/skyra.git"
+	},
+	"keywords": [
+		"discord.js",
+		"klasa",
+		"bot",
+		"standalone"
+	],
+	"private": true,
+	"author": "kyranet <kyradiscord@gmail.com>",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/skyra-project/skyra/issues"
+	},
+	"dependencies": {
+		"@discordjs/collection": "^0.1.6",
+		"@influxdata/influxdb-client": "^1.6.0",
+		"@influxdata/influxdb-client-apis": "^1.6.0",
+		"@klasa/async-queue": "^0.0.1",
+		"@klasa/console": "^0.0.3",
+		"@klasa/cron": "^0.0.1",
+		"@klasa/querybuilder": "^0.0.1",
+		"@klasa/request-handler": "^0.0.3",
+		"@klasa/snowflake": "^0.0.1",
+		"@klasa/timer-manager": "^0.0.1",
+		"@klasa/timestamp": "^0.0.1",
+		"@klasa/type": "^0.0.1",
+		"@sapphire/utilities": "^1.0.0",
+		"@sentry/integrations": "^5.24.2",
+		"@sentry/node": "^5.24.2",
+		"@skyra/char": "^1.0.1",
+		"@skyra/decorators": "discordjs",
+		"binarytf": "^2.0.0",
+		"canvas": "^2.6.1",
+		"canvas-constructor": "^4.1.0",
+		"confusables": "^1.0.0",
+		"diff": "^4.0.2",
+		"discord.js": "^12.3.1",
+		"emoji-regex": "^9.0.0",
+		"fs-nextra": "^0.5.1",
+		"gifencoder": "^2.0.1",
+		"he": "^1.2.0",
+		"ioredis": "^4.17.3",
+		"klasa": "skyra-project/klasa#build",
+		"klasa-dashboard-hooks": "skyra-project/klasa-dashboard-hooks#master",
+		"lavacord": "^1.1.9",
+		"module-alias": "^2.2.2",
+		"node-fetch": "^2.6.1",
+		"pg": "^8.3.3",
+		"tslib": "1.11.2",
+		"tsyringe": "^4.3.0",
+		"typeorm": "^0.2.26",
+		"typeorm-naming-strategies": "^2.0.0",
+		"veza": "^1.1.0",
+		"ws": "^7.3.1",
+		"zlib-sync": "^0.1.7"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
+		"@discordjs/collection": "^0.1.6",
+		"@favware/graphql-pokemon": "^4.3.0",
+		"@klasa/dapi-types": "^0.3.0",
+		"@playlyfe/gql": "^2.6.2",
+		"@skyra/eslint-config": "^5.3.3",
+		"@skyra/saelem": "^2.0.0",
+		"@types/backoff": "^2.5.1",
+		"@types/diff": "^4.0.2",
+		"@types/he": "^1.1.1",
+		"@types/ioredis": "^4.17.4",
+		"@types/jest": "^26.0.13",
+		"@types/module-alias": "^2.0.0",
+		"@types/node": "^14.11.1",
+		"@types/node-fetch": "^2.5.7",
+		"@types/pg": "^7.14.4",
+		"@types/ws": "^7.2.6",
+		"@typescript-eslint/eslint-plugin": "^4.1.0",
+		"@typescript-eslint/parser": "^4.1.0",
+		"chokidar": "^3.4.2",
+		"cz-conventional-changelog": "^3.3.0",
+		"discord-api-types": "^0.5.0",
+		"eslint": "^7.8.1",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-prettier": "^3.1.4",
+		"husky": "^4.3.0",
+		"jest": "^26.4.2",
+		"jest-circus": "^26.4.2",
+		"jest-mock-random": "^1.1.0",
+		"lint-staged": "^10.3.0",
+		"nock": "^13.0.4",
+		"prettier": "^2.1.1",
+		"pretty-quick": "^3.0.2",
+		"ts-jest": "^26.3.0",
+		"tsconfig-paths": "^3.9.0",
+		"typescript": "^4.0.3"
+	},
+	"_moduleAliases": {
+		"@orm": "dist/lib/orm",
+		"@utils": "dist/lib/util",
+		"@lib": "dist/lib",
+		"@root": "dist"
+	},
+	"resolutions": {
+		"@bcoe/v8-coverage": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.0.2.tgz",
+		"acorn": "^7.3.1",
+		"apollo-codegen": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.0.2.tgz",
+		"chalk": "^4.1.0",
+		"fs-nextra": "^0.5.1",
+		"jest-environment-jsdom": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.0.2.tgz",
+		"jest-jasmine2": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.0.2.tgz",
+		"kind-of": "^6.0.3",
+		"lodash": "^4.17.20",
+		"minimist": "^1.2.5",
+		"node-ipc": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.0.2.tgz"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6"
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+			"pre-commit": "yarn pretty-quick --staged && yarn lint-staged"
+		}
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	},
+	"lint-staged": {
+		"*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	}
+}

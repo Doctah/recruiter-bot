@@ -1,0 +1,46 @@
+# Ignore a blackhole and the folder for development
+node_modules/
+.vs/
+.idea/
+*.iml
+/rethinkdb_data/
+coverage/
+
+# Environment variables
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+redis.local.conf
+
+# Ignore bwd folders
+dist/
+bwd/
+
+# Ignore JavaScript files
+**/*.js
+**/*.mjs
+!scripts/*.mjs
+**/*.js.map
+**/*.d.ts
+!src/**/*.d.ts
+**/*.tsbuildinfo
+!jest.config.js
+!ormconfig.js
+
+# Ignore the config file (contains sensitive information such as tokens)
+config.ts
+
+# Ignore heapsnapshot and log files
+*.heapsnapshot
+*.log
+
+# Ignore package locks
+package-lock.json
+
+# Ignore the GH cli downloaded by workflows
+gh
+
+# Ignore the "wiki" folder so we can checkout the wiki inside the same folder
+wiki/
