@@ -44,10 +44,6 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-14-${{ hashFiles('**/yarn.lock') }}
-      - name: Setup node-canvas Dependencies
-        run: |
-          sudo apt-get install libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y &&
-          yarn global add node-gyp node-pre-gyp
       - name: Install Dependencies
         run: yarn --frozen-lockfile
       - name: Copy Configuration
