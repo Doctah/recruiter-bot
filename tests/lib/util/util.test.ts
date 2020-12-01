@@ -1,6 +1,7 @@
 import Collection from '@discordjs/collection';
 import { client } from '@mocks/MockInstances';
 import { Mime, Time } from '@utils/constants';
+import { Image } from 'canvas';
 import * as utils from '@utils/util';
 import {
 	CategoryChannel,
