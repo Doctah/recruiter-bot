@@ -2188,18 +2188,20 @@ export default class extends Language {
 		 * RECRUITMENT
 		 */
 		recruitmentQuestion1: ({ member }) =>
-			`${member} Thank you for beginning this application! Go ahead and let us know what you'd like for us to call you during raid.`,
+			`${member} Thank you for beginning this application! Go ahead and let us know what you'd like for us to call you during raid`,
 		recruitmentQuestion2: 'What class/spec do you plan to mostly raid on?',
-		recruitmentQuestion3: 'Please provide a link to your character page. (worldofwarcraft.com)',
-		recruitmentQuestion4: 'Tell us a little bit about your raiding experience in the current expansion, as well as in past expansions.',
+		recruitmentQuestion3: 'Please provide a link to your Warcraft Logs page',
+		recruitmentQuestion4: 'Tell us a little bit about your raiding experience in the current expansion, as well as in past expansions',
 		recruitmentQuestion5:
 			'Please provide a screenshot of your UI in combat, uploaded to an image hosting website such as imgur. If you upload it to this channel it will be erased!',
-		recruitmentQuestion6:
-			"In Shadowlands, we're asking everyone to have a primary class choice, and a secondary class choice. For you, what would these be?",
+		recruitmentQuestion6: 'Do you currently or plan on maintaining alts?',
 		recruitmentQuestion7:
+			'If we were preparing to progress on a difficult boss, such as the last in a tier, what would be your method of preparing yourself personally for this boss? What specific mechanics would you study for your class specifically, and how much time would this take you?',
+		recruitmentQuestion8:
 			'We will currently be raiding on Tuesday and Wednesday from 9:00pm to 12:00am EST. Will you be able to make these times consistently, barring unforeseen circumstances?',
-		recruitmentQuestion8: 'What are your goals for Shadowlands?',
-		recruitmentQuestion9: 'Tell us a little bit about yourself outside the game.',
+		recruitmentQuestion9: 'What are your goals for Shadowlands?',
+		recruitmentQuestion10: 'Tell us a little bit about yourself outside the game',
+		recruitmentQuestion11: 'Do you have any in-guild references? If so, please list them',
 
 		/**
 		 * ###################

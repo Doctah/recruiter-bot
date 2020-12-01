@@ -1282,6 +1282,8 @@ declare module 'klasa' {
 		recruitmentQuestion7: string;
 		recruitmentQuestion8: string;
 		recruitmentQuestion9: string;
+		recruitmentQuestion10: string;
+		recruitmentQuestion11: string;
 		constMonitorInvitelink: string;
 		constMonitorLink: string;
 		constMonitorWordfilter: string;

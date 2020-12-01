@@ -259,6 +259,26 @@ export default class extends Event {
 							});
 						})
 						.then(async () => {
+							let sent = await userChannel.sendLocale('recruitmentQuestion10');
+
+							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
+								questionsAndAnswers.push({
+									question: sent.content,
+									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
+								});
+							});
+						})
+						.then(async () => {
+							let sent = await userChannel.sendLocale('recruitmentQuestion11');
+
+							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
+								questionsAndAnswers.push({
+									question: sent.content,
+									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
+								});
+							});
+						})
+						.then(async () => {
 							this.client.emit(Events.Debug, '5. Finished asking questions. Clearing and posting.');
 							const embed = new MessageEmbed();
 							questionsAndAnswers.forEach((item) => {
