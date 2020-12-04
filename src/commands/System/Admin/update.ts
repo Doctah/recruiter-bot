@@ -33,7 +33,7 @@ export default class extends BotCommand {
 	}
 
 	private async compile(message: KlasaMessage) {
-		const { stderr, code } = await this.exec('yarn build');
+		const { stderr, code } = await this.exec('tsc -b src');
 		if (code !== 0 && stderr.length) throw stderr.trim();
 		return message.channel.send(`${Emojis.GreenTick} Successfully compiled.`);
 	}
