@@ -2196,7 +2196,7 @@ export default class extends Language {
 			'Please provide a screenshot of your UI in combat, uploaded to an image hosting website such as imgur. If you upload it to this channel it will be erased!',
 		recruitmentQuestion6: 'Do you currently or plan on maintaining alts?',
 		recruitmentQuestion7:
-			'If we were preparing to progress on a difficult boss, such as the last in a tier, what would be your method of preparing yourself personally for this boss? What specific mechanics would you study for your class specifically, and how much time would this take you?',
+			'If we are preparing to progress on a difficult boss, such as the last in a tier, what would be your method of preparing yourself for this boss? What specific mechanics would you study for your class specifically, and how much time would this take you?',
 		recruitmentQuestion8:
 			'We will currently be raiding on Tuesday and Wednesday from 9:00pm to 12:00am EST. Will you be able to make these times consistently, barring unforeseen circumstances?',
 		recruitmentQuestion9: 'What are your goals for Shadowlands?',
@@ -3412,10 +3412,10 @@ export default class extends Language {
 
 		commandDmNotSent: 'I cannot send you a message in DMs, did you block me?',
 		commandDmSent: 'I have sent you the message in DMs.',
-		commandRoleHigherSkyra: 'The selected member has a role position that is higher than or equal to mine.',
+		commandRoleHigherBot: 'The selected member has a role position that is higher than or equal to mine.',
 		commandRoleHigher: 'The selected member has a role position that is higher than or equal to yours.',
 		commandSuccess: 'Successfully executed the command.',
-		commandToskyra: 'Why... I thought you loved me! 💔',
+		commandToBot: 'Why... I thought you loved me! 💔',
 		commandUserself: 'Why would you do that to yourself?',
 
 		systemParseError: `${REDCROSS} I failed to process the data I was given, sorry~!`,
