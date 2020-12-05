@@ -1,6 +1,6 @@
 import { MusicCommand, MusicCommandOptions } from '@lib/structures/MusicCommand';
 import { ApplyOptions } from '@skyra/decorators';
-import { requireDj, requireSkyraInVoiceChannel } from '@utils/Music/Decorators';
+import { requireDj, requireBotInVoiceChannel } from '@utils/Music/Decorators';
 import { KlasaMessage } from 'klasa';
 
 @ApplyOptions<MusicCommandOptions>({
@@ -9,7 +9,7 @@ import { KlasaMessage } from 'klasa';
 	flagSupport: true
 })
 export default class extends MusicCommand {
-	@requireSkyraInVoiceChannel()
+	@requireBotInVoiceChannel()
 	@requireDj()
 	public async run(message: KlasaMessage) {
 		// Do a full leave and disconnect

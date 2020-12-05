@@ -4,7 +4,7 @@ import {
 	requireDj,
 	requireQueueNotEmpty,
 	requireSameVoiceChannel,
-	requireSkyraInVoiceChannel,
+	requireBotInVoiceChannel,
 	requireUserInVoiceChannel
 } from '@utils/Music/Decorators';
 import { KlasaMessage } from 'klasa';
@@ -18,7 +18,7 @@ export default class extends MusicCommand {
 	@requireDj()
 	@requireQueueNotEmpty()
 	@requireUserInVoiceChannel()
-	@requireSkyraInVoiceChannel()
+	@requireBotInVoiceChannel()
 	@requireSameVoiceChannel()
 	public run(message: KlasaMessage, [index]: [number]) {
 		if (index <= 0) throw message.language.get('commandRemoveIndexInvalid');

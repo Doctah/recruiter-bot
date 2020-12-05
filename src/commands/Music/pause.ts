@@ -4,7 +4,7 @@ import {
 	requireDj,
 	requireMusicPlaying,
 	requireSameVoiceChannel,
-	requireSkyraInVoiceChannel,
+	requireBotInVoiceChannel,
 	requireUserInVoiceChannel
 } from '@utils/Music/Decorators';
 import { KlasaMessage } from 'klasa';
@@ -14,7 +14,7 @@ import { KlasaMessage } from 'klasa';
 })
 export default class extends MusicCommand {
 	@requireUserInVoiceChannel()
-	@requireSkyraInVoiceChannel()
+	@requireBotInVoiceChannel()
 	@requireSameVoiceChannel()
 	@requireDj()
 	@requireMusicPlaying()
