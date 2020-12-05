@@ -25,9 +25,9 @@ export class WebsocketHandler {
 	}
 
 	private handleConnection(ws: WebSocket, request: ApiRequest) {
-		// Read SKYRA_AUTH cookie
+		// Read BOT_AUTH cookie
 		const cookies = new CookieStore(request, null!, !DEV);
-		const auth = cookies.get('SKYRA_AUTH');
+		const auth = cookies.get('BOT_AUTH');
 		if (!auth) return ws.close(CloseCodes.Unauthorized);
 
 		// Decrypt and validate

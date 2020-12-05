@@ -315,8 +315,8 @@ export class MusicHandler {
 	}
 
 	/**
-	 * Downloads and parses a Skyra Queue
-	 * @param url The URL to the `.squeue` file
+	 * Downloads and parses a bot Queue
+	 * @param url The URL to the `.bqueue` file
 	 */
 	public async parseQueue(url: string): Promise<TrackData[]> {
 		try {

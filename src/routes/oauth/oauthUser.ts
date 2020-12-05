@@ -51,7 +51,7 @@ export default class extends Route {
 						this.client.options.clientSecret
 					);
 
-					response.cookies.add('SKYRA_AUTH', authentication, { maxAge: body.expires_in });
+					response.cookies.add('BOT_AUTH', authentication, { maxAge: body.expires_in });
 					authToken = body.access_token;
 				}
 			}
@@ -117,7 +117,7 @@ export default class extends Route {
 				...serialized,
 				permissions: oauthGuild.permissions,
 				manageable: await this.getManageable(id, oauthGuild, guild),
-				skyraIsIn: typeof guild !== 'undefined'
+				botIsIn: typeof guild !== 'undefined'
 			});
 		}
 
@@ -192,7 +192,7 @@ interface PartialOauthFlattenedGuild extends Omit<FlattenedGuild, 'joinedTimesta
 interface OauthFlattenedGuild extends PartialOauthFlattenedGuild {
 	permissions: number;
 	manageable: boolean;
-	skyraIsIn: boolean;
+	botIsIn: boolean;
 }
 
 interface OauthFlattenedUser extends FlattenedUser {

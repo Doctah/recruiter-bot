@@ -43,7 +43,7 @@ export function requireUserInVoiceChannel(): MethodDecorator {
 	);
 }
 
-export function requireSkyraInVoiceChannel(): MethodDecorator {
+export function requireBotInVoiceChannel(): MethodDecorator {
 	return createFunctionInhibitor(
 		(message: KlasaMessage) => message.guild!.music.voiceChannel !== null,
 		(message: KlasaMessage) => message.sendLocale('inhibitorMusicBotVoiceChannel')

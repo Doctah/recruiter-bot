@@ -4,7 +4,7 @@ export default class extends IPCMonitor {
 	public run() {
 		const memoryUsage = process.memoryUsage();
 		return {
-			name: 'skyra',
+			name: 'bot',
 			presence: null,
 			statistics: this.client.ws.shards.map((shard) => ({
 				heapTotal: memoryUsage.heapTotal,

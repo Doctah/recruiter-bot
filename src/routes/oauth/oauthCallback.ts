@@ -65,7 +65,7 @@ export default class extends Route {
 			this.client.options.clientSecret
 		);
 
-		response.cookies.add('SKYRA_AUTH', authentication, { maxAge: body.expires_in });
+		response.cookies.add('BOT_AUTH', authentication, { maxAge: body.expires_in });
 		response.json({ user });
 	}
 }

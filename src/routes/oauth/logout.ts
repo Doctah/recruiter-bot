@@ -34,7 +34,7 @@ export default class extends Route {
 			return response.error('There was an error revoking the token.');
 		}
 
-		response.cookies.add('SKYRA_AUTH', '', { expires: new Date(0) });
+		response.cookies.add('BOT_AUTH', '', { expires: new Date(0) });
 		response.json({ success: true });
 	}
 }

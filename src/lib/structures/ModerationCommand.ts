@@ -133,7 +133,7 @@ export abstract class ModerationCommand<T = unknown> extends BotCommand {
 		}
 
 		if (context.target.id === CLIENT_ID) {
-			throw message.language.get('commandToskyra');
+			throw message.language.get('commandToBot');
 		}
 
 		const member = await message.guild!.members.fetch(context.target.id).catch(() => {
@@ -143,7 +143,7 @@ export abstract class ModerationCommand<T = unknown> extends BotCommand {
 
 		if (member) {
 			const targetHighestRolePosition = member.roles.highest.position;
-			if (targetHighestRolePosition >= message.guild!.me!.roles.highest.position) throw message.language.get('commandRoleHigherSkyra');
+			if (targetHighestRolePosition >= message.guild!.me!.roles.highest.position) throw message.language.get('commandRoleHigherBot');
 			if (targetHighestRolePosition >= message.member!.roles.highest.position) throw message.language.get('commandRoleHigher');
 		}
 

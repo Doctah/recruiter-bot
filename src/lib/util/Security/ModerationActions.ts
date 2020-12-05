@@ -366,7 +366,7 @@ export class ModerationActions {
 		const oldModerationLog = await this.cancelLastLogTaskFromUser(options.userID, Moderation.TypeCodes.Mute);
 		if (typeof oldModerationLog === 'undefined') throw this.guild.language.get('muteNotExists');
 
-		// If Skyra does not have permissions to manage permissions, abort.
+		// If the bot does not have permissions to manage permissions, abort.
 		if (!(await this.fetchMe()).permissions.has(Permissions.FLAGS.MANAGE_ROLES)) throw this.guild.language.get('muteCannotManageRoles');
 
 		await this.unmuteUser(options, oldModerationLog);

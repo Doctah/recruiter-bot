@@ -23,7 +23,7 @@ const enum Filter {
 	Invites,
 	Links,
 	None,
-	Skyra,
+	Recruiter,
 	User
 }
 
@@ -67,8 +67,8 @@ export default class extends BotCommand {
 		invites: Filter.Invites,
 		link: Filter.Links,
 		links: Filter.Links,
-		skyra: Filter.Skyra,
-		you: Filter.Skyra
+		recruiter: Filter.Recruiter,
+		you: Filter.Recruiter
 	};
 
 	public async init() {
@@ -101,8 +101,8 @@ export default class extends BotCommand {
 		// - Invalid limit (less than 1 or more than 100).
 		// - Invalid filter
 		// For example `prune 642748845687570444` (invalid ID) or `prune u` (invalid filter)
-		// are invalid command usages and therefore, for the sake of protection, Skyra should
-		// not execute an erroneous command.
+		// are invalid command usages and therefore, for the sake of protection, the bot
+		// should not execute an erroneous command.
 		if (message.args.length > 4) throw message.language.get('commandPruneInvalid');
 
 		const position = this.resolvePosition(rawPosition);
@@ -156,7 +156,7 @@ export default class extends BotCommand {
 				return (mes: Message) => this.kInviteRegExp.test(mes.content);
 			case Filter.Links:
 				return (mes: Message) => this.kLinkRegExp.test(mes.content);
-			case Filter.Skyra:
+			case Filter.Recruiter:
 				return (mes: Message) => mes.author.id === CLIENT_ID;
 			case Filter.User:
 				return (mes: Message) => mes.author.id === user!.id;

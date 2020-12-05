@@ -8,7 +8,7 @@ export default class extends Middleware {
 	public run(request: ApiRequest, response: ApiResponse, route?: Route) {
 		if (!route) return;
 
-		const authorization = response.cookies.get('SKYRA_AUTH');
+		const authorization = response.cookies.get('BOT_AUTH');
 		if (authorization) {
 			request.auth = Util.decrypt(authorization, this.client.options.clientSecret) as UserAuthObject;
 		} else if (route.authenticated) {
