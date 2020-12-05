@@ -1417,10 +1417,10 @@ declare module 'klasa' {
 		unexpectedIssue: string;
 		commandDmNotSent: string;
 		commandDmSent: string;
-		commandRoleHigherSkyra: string;
+		commandRoleHigherBot: string;
 		commandRoleHigher: string;
 		commandSuccess: string;
-		commandToskyra: string;
+		commandToBot: string;
 		commandUserself: string;
 		systemParseError: string;
 		systemHighestRole: string;
