@@ -103,9 +103,12 @@ export default class extends Event {
 	}
 
 	private async handleRecruitment(data: LLRCData, emoji: string) {
-		if (data.channel.id !== data.guild.settings.get(GuildSettings.Recruitment.Channel)) return;
-		if (emoji !== data.guild.settings.get(GuildSettings.Recruitment.Emoji)) return;
-		if (!data.guild.settings.get(GuildSettings.Recruitment.Enabled)) return;
+		if (
+			data.channel.id !== data.guild.settings.get(GuildSettings.Recruitment.Channel) ||
+			emoji !== data.guild.settings.get(GuildSettings.Recruitment.Emoji) ||
+			data.guild.settings.get(GuildSettings.Recruitment.Enabled)
+		)
+			return;
 
 		try {
 			const member = await data.guild.members.fetch(data.userID);
