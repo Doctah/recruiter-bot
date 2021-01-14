@@ -103,6 +103,10 @@ export default class extends Event {
 	}
 
 	private async handleRecruitment(data: LLRCData, emoji: string) {
+		console.log(data.channel.id !== data.guild.settings.get(GuildSettings.Recruitment.Channel));
+		console.log(emoji !== data.guild.settings.get(GuildSettings.Recruitment.Emoji));
+		console.log(data.guild.settings.get(GuildSettings.Recruitment.Enabled));
+
 		if (
 			data.channel.id !== data.guild.settings.get(GuildSettings.Recruitment.Channel) ||
 			emoji !== data.guild.settings.get(GuildSettings.Recruitment.Emoji) ||
@@ -280,16 +284,9 @@ export default class extends Event {
 						})
 						.then(async () => {
 							this.client.emit(Events.Debug, '5. Finished asking questions. Clearing and posting.');
-							const embed = new MessageEmbed();
-							questionsAndAnswers.forEach((item) => {
-								embed.addField(item.question, item.answer);
-							});
-
-							await userChannel.bulkDelete(100).then(async () => {
-								await userChannel.send('Thanks for applying! Please wait for an officer to come by and speak with you.', embed);
-								await officerChannel.send(`${officerRole}, there is an applicant waiting in ${userChannel}!`, {
-									allowedMentions: { users: [], roles: [officerRole.id] }
-								});
+							await userChannel.send('Thanks for applying! Please wait for an officer to come by and speak with you.');
+							await officerChannel.send(`${officerRole}, there is an applicant waiting in ${userChannel}!`, {
+								allowedMentions: { users: [], roles: [officerRole.id] }
 							});
 
 							return this.client.emit(Events.Debug, '6. Officers notified. We are out of here!');
