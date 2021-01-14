@@ -103,31 +103,18 @@ export default class extends Event {
 	}
 
 	private async handleRecruitment(data: LLRCData, emoji: string) {
-		console.log(data.channel.id !== data.guild.settings.get(GuildSettings.Recruitment.Channel));
-		console.log(emoji !== data.guild.settings.get(GuildSettings.Recruitment.Emoji));
-		console.log(data.guild.settings.get(GuildSettings.Recruitment.Enabled));
-
-		if (
-			data.channel.id !== data.guild.settings.get(GuildSettings.Recruitment.Channel) ||
-			emoji !== data.guild.settings.get(GuildSettings.Recruitment.Emoji) ||
-			data.guild.settings.get(GuildSettings.Recruitment.Enabled)
-		)
-			return;
-
-		this.client.emit(Events.Debug, '1. Reaction found and is recruitment related.');
+		if (data.channel.id !== data.guild.settings.get(GuildSettings.Recruitment.Channel)) return;
+		if (emoji !== data.guild.settings.get(GuildSettings.Recruitment.Emoji)) return;
+		if (!data.guild.settings.get(GuildSettings.Recruitment.Enabled)) return;
 
 		try {
 			const member = await data.guild.members.fetch(data.userID);
 			const botMember = await data.guild.members.fetch(this.client.user!.id);
 			const channelName = member.user.username.toLowerCase() + member.user.discriminator;
 
-			this.client.emit(Events.Debug, '2. Checking if they already have an ongoing application.');
 			if (data.guild.channels.cache.find((channel) => channel.name === channelName)) {
-				this.client.emit(Events.Debug, '2a. Application found, returning and sending message.');
 				return member.send(`It appears we already have an active application for you!`);
 			}
-
-			this.client.emit(Events.Debug, '3. Beginning channel creation process.');
 
 			const officerRoleSetting = data.guild.settings.get(GuildSettings.Recruitment.OfficerRole);
 			const officerRole = data.guild.roles.cache.get(officerRoleSetting) as Role;
@@ -161,7 +148,6 @@ export default class extends Event {
 					parent: parentChannel
 				})
 				.then((userChannel) => {
-					this.client.emit(Events.Debug, '4. Channel created. Beginning questions.');
 					return userChannel.overwritePermissions([
 						{ id: member, allow: ['VIEW_CHANNEL'] },
 						{ id: this.client.user!.id, allow: ['VIEW_CHANNEL'] },
@@ -283,13 +269,10 @@ export default class extends Event {
 							});
 						})
 						.then(async () => {
-							this.client.emit(Events.Debug, '5. Finished asking questions. Clearing and posting.');
 							await userChannel.send('Thanks for applying! Please wait for an officer to come by and speak with you.');
 							await officerChannel.send(`${officerRole}, there is an applicant waiting in ${userChannel}!`, {
 								allowedMentions: { users: [], roles: [officerRole.id] }
 							});
-
-							return this.client.emit(Events.Debug, '6. Officers notified. We are out of here!');
 						});
 				});
 		} catch (error) {
