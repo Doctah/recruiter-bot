@@ -638,6 +638,7 @@ export default class extends Language {
 		settingsRecruitmentChannel: 'The channel where the welcome message is housed. For example, `set #welcome-channel`',
 		settingsRecruitmentOfficerchannel: 'The channel where you want the bot to notify officers of a new applicant. For example, `set #officers`',
 		settingsRecruitmentOfficerrole: 'The (pingable) role for your officers. For example, `set @Officer`',
+		settingsRecruitmentViewerrole: 'An optional role that allows you to have observers in the recruitment process.',
 		settingsRecruitmentRecruitmessage:
 			'The message ID you want the bot to monitor for reactions. This can be found by enabling developer options in your Discord settings and right-clicking the message and clicking "Copy ID". For example, `set 758324692519485491`',
 

@@ -122,6 +122,9 @@ export default class extends Event {
 			const officerRoleSetting = data.guild.settings.get(GuildSettings.Recruitment.OfficerRole);
 			const officerRole = data.guild.roles.cache.get(officerRoleSetting) as Role;
 
+			const viewerRoleSetting = data.guild.settings.get(GuildSettings.Recruitment.ViewerRole);
+			const viewerRole = data.guild.roles.cache.get(viewerRoleSetting) as Role;
+
 			if (!officerRole) {
 				data.guild.owner?.send('[RECRUITMENT]: The officer role has not been configured.');
 				return this.client.emit(Events.Error, 'Missing officer role! Notified server owner.');
@@ -155,128 +158,36 @@ export default class extends Event {
 						{ id: member, allow: ['VIEW_CHANNEL'] },
 						{ id: this.client.user!.id, allow: ['VIEW_CHANNEL'] },
 						{ id: data.guild.roles.everyone, deny: ['VIEW_CHANNEL'] },
-						{ id: officerRole?.id as string, allow: ['VIEW_CHANNEL'] }
+						{ id: officerRole?.id as string, allow: ['VIEW_CHANNEL'] },
+						{ id: viewerRole?.id, allow: ['VIEW_CHANNEL'], deny: ['SEND_MESSAGES'] }
 					]);
 				})
 				.then(async (userChannel) => {
-					let questionsAndAnswers: { question: string; answer: string | undefined }[] = [];
 					const filter = (m: any) => m.member === member;
 
-					let sent = await userChannel.sendLocale('recruitmentQuestion1', [{ member }], {
-						allowedMentions: { users: [member.id], roles: [] }
+					// this is for later
+					let questions = [
+						`${member} Thank you for beginning this application! Go ahead and let us know what you'd like for us to call you during raid`,
+						'What class/spec do you plan to mostly raid on?',
+						'Please provide a link to your Warcraft Logs page',
+						'Tell us a little bit about your raiding experience in the current expansion, as well as in past expansions',
+						'Please provide a screenshot of your UI in combat.',
+						'Do you currently or plan on maintaining alts?',
+						'If we are preparing to progress on a difficult boss, such as the last in a tier, what would be your method of preparing yourself for this boss? What specific mechanics would you study for your class specifically, and how much time would this take you?',
+						'What are your goals for Shadowlands?',
+						'Tell us a little bit about yourself outside the game',
+						'Do you have any in-guild references? If so, please list them'
+					];
+
+					for (let question of questions) {
+						await userChannel.send(question);
+						await userChannel.awaitMessages(filter, { max: 1 });
+					}
+
+					await userChannel.send('Thanks for applying! Please wait for an officer to come by and speak with you.');
+					await officerChannel.send(`${officerRole}, there is an applicant waiting in ${userChannel}!`, {
+						allowedMentions: { users: [], roles: [officerRole.id] }
 					});
-					await userChannel
-						.awaitMessages(filter, { max: 1 })
-						.then((collected) => {
-							questionsAndAnswers.push({
-								question: sent.content,
-								answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion2');
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion3');
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion4');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion5');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion6');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion7');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion8');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion9');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion10');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							let sent = await userChannel.sendLocale('recruitmentQuestion11');
-
-							await userChannel.awaitMessages(filter, { max: 1 }).then((collected) => {
-								questionsAndAnswers.push({
-									question: sent.content,
-									answer: collected.first()?.content ? collected.first()?.content : 'No answer provided.'
-								});
-							});
-						})
-						.then(async () => {
-							await userChannel.send('Thanks for applying! Please wait for an officer to come by and speak with you.');
-							await officerChannel.send(`${officerRole}, there is an applicant waiting in ${userChannel}!`, {
-								allowedMentions: { users: [], roles: [officerRole.id] }
-							});
-						});
 				});
 		} catch (error) {
 			this.client.emit(Events.ApiError, error);

@@ -475,6 +475,9 @@ export class GuildEntity extends BaseEntity {
 	@Column('varchar', { name: 'recruitment.officerRole', nullable: true, length: 19 })
 	public officerRole?: string | null;
 
+	@Column('varchar', { name: 'recruitment.viewerRole', nullable: true, length: 19 })
+	public viewerole?: string | null;
+
 	@Column('varchar', { name: 'recruitment.emoji', length: 75, default: '%E2%98%91%EF%B8%8F' })
 	public recruitmentEmoji = '%E2%98%91%EF%B8%8F';
 

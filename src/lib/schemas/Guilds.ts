@@ -192,6 +192,7 @@ export default Client.defaultGuildSchema
 			.add('channel', 'TextChannel')
 			.add('officerChannel', 'TextChannel')
 			.add('officerRole', 'Role')
+			.add('viewerRole', 'Role')
 			.add('emoji', 'String', { default: '%E2%98%91%EF%B8%8F', configurable: false })
 			.add('recruitMessage', 'String')
 	)

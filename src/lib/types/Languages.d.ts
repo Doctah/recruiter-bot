@@ -485,6 +485,7 @@ declare module 'klasa' {
 		settingsRecruitmentChannel: string;
 		settingsRecruitmentOfficerchannel: string;
 		settingsRecruitmentOfficerrole: string;
+		settingsRecruitmentViewerrole: string;
 		settingsRecruitmentRecruitmessage: string;
 		commandCreateMuteDescription: string;
 		commandCreateMuteExtended: LanguageHelpDisplayOptions;

@@ -186,6 +186,7 @@ export namespace GuildSettings {
 		export const Channel = T<string>('recruitment.channel');
 		export const OfficerChannel = T<string>('recruitment.officerChannel');
 		export const OfficerRole = T<string>('recruitment.officerRole');
+		export const ViewerRole = T<string>('recruitment.viewerRole');
 		export const Emoji = T<string>('recruitment.emoji');
 		export const RecruitMessage = T<string>('recruitment.recruitMessage');
 	}
