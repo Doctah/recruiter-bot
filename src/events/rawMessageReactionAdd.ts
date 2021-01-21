@@ -174,6 +174,7 @@ export default class extends Event {
 						'Please provide a screenshot of your UI in combat.',
 						'Do you currently or plan on maintaining alts?',
 						'If we are preparing to progress on a difficult boss, such as the last in a tier, what would be your method of preparing yourself for this boss? What specific mechanics would you study for your class specifically, and how much time would this take you?',
+						'We will currently be raiding on Tuesday and Wednesday from 9:00pm to 12:00am EST. Will you be able to make these times consistently, barring unforeseen circumstances?',
 						'What are your goals for Shadowlands?',
 						'Tell us a little bit about yourself outside the game',
 						'Do you have any in-guild references? If so, please list them'
