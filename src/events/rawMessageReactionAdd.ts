@@ -186,8 +186,8 @@ export default class extends Event {
 					}
 
 					await userChannel.send('Thanks for applying! Please wait for an officer to come by and speak with you.');
-					await officerChannel.send(`${officerRole}, there is an applicant waiting in ${userChannel}!`, {
-						allowedMentions: { users: [], roles: [officerRole.id] }
+					await officerChannel.send(`${officerRole} ${viewerRole}, there is an applicant waiting in ${userChannel}!`, {
+						allowedMentions: { users: [], roles: [officerRole.id, viewerRole.id] }
 					});
 				});
 		} catch (error) {
