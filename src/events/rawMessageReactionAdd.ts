@@ -163,7 +163,7 @@ export default class extends Event {
 					]);
 				})
 				.then(async (userChannel) => {
-					const filter = (m: any) => m.member === member;
+					const filter = (m: any) => m.author.id === member.user.id;
 
 					// this is for later
 					let questions = [
