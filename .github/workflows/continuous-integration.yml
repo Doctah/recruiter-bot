@@ -9,7 +9,7 @@ on:
 jobs:
   Linting:
     name: Linting
-    runs-on: container
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - name: Checkout Project
@@ -30,7 +30,7 @@ jobs:
 
   Testing:
     name: Unit Tests
-    runs-on: container
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - name: Checkout Project
@@ -65,7 +65,7 @@ jobs:
 
   Building:
     name: Compile source code
-    runs-on: container
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - name: Checkout Project
@@ -94,7 +94,7 @@ jobs:
   Upload_Coverage_Report:
     name: Upload coverage report to coveralls
     needs: [Testing]
-    runs-on: container
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
         uses: actions/checkout@v2
