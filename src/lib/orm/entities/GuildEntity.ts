@@ -1,4 +1,5 @@
 import type {
+	RecruitmentQuestions,
 	CustomCommand,
 	DisabledCommandChannel,
 	PermissionsNode,
@@ -42,8 +43,6 @@ import { BaseEntity, Check, Column, Entity, PrimaryColumn } from 'typeorm';
 @Check(/* sql */ `("selfmod.links.thresholdMaximum" >= 0) AND ("selfmod.links.thresholdMaximum" <= 60)`)
 @Check(/* sql */ `("selfmod.links.thresholdDuration" >= 0) AND ("selfmod.links.thresholdDuration" <= 120000)`)
 @Check(/* sql */ `("selfmod.raidthreshold" >= 2) AND ("selfmod.raidthreshold" <= 50)`)
-@Check(/* sql */ `"no-mention-spam.mentionsAllowed" >= 0`)
-@Check(/* sql */ `"no-mention-spam.timePeriod" >= 0`)
 @Check(/* sql */ `"starboard.minimum" >= 1`)
 export class GuildEntity extends BaseEntity {
 	@PrimaryColumn('varchar', { name: 'id', length: 19 })
@@ -483,6 +482,9 @@ export class GuildEntity extends BaseEntity {
 
 	@Column('varchar', { name: 'recruitment.recruitMessage', nullable: true, length: 19 })
 	public recruitMessage?: string | null;
+
+	@Column('simple-json', { name: 'recruitment.questions', array: true, default: () => 'ARRAY[]::JSON[]' })
+	public recruitmentQuestions: RecruitmentQuestions[] = [];
 
 	@Column('varchar', { name: 'starboard.channel', nullable: true, length: 19 })
 	public starboardChannel?: string | null;

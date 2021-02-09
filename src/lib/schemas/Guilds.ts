@@ -179,13 +179,6 @@ export default Client.defaultGuildSchema
 			.add('raidthreshold', 'Integer', { default: 10, minimum: 2, maximum: 50 })
 			.add('ignoreChannels', 'TextChannel', { array: true })
 	)
-	.add('no-mention-spam', (folder) =>
-		folder
-			.add('enabled', 'Boolean', { default: false })
-			.add('alerts', 'Boolean', { default: false })
-			.add('mentionsAllowed', 'Integer', { default: 20, minimum: 0 })
-			.add('timePeriod', 'Integer', { default: 8, minimum: 0 })
-	)
 	.add('recruitment', (folder) =>
 		folder
 			.add('enabled', 'boolean', { default: false })
@@ -195,6 +188,7 @@ export default Client.defaultGuildSchema
 			.add('viewerRole', 'Role')
 			.add('emoji', 'String', { default: '%E2%98%91%EF%B8%8F', configurable: false })
 			.add('recruitMessage', 'String')
+			.add('questions', 'RecruitmentQuestions', { array: true, configurable: false })
 	)
 	.add('starboard', (folder) =>
 		folder

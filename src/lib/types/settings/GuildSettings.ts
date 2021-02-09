@@ -189,6 +189,7 @@ export namespace GuildSettings {
 		export const ViewerRole = T<string>('recruitment.viewerRole');
 		export const Emoji = T<string>('recruitment.emoji');
 		export const RecruitMessage = T<string>('recruitment.recruitMessage');
+		export const Questions = T<RecruitmentQuestions[]>('recruitment.questions');
 	}
 
 	export namespace Starboard {
@@ -216,6 +217,11 @@ export interface PermissionsNode {
 	id: string;
 	allow: string[];
 	deny: string[];
+}
+
+export interface RecruitmentQuestions {
+	id: number;
+	content: string;
 }
 
 export interface CustomCommand {

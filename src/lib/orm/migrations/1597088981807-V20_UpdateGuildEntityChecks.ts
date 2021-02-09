@@ -196,16 +196,6 @@ export class V20UpdateGuildEntityChecks1597088981807 implements MigrationInterfa
 				name: this.generateCheckName(/* sql */ `("selfmod.raidthreshold" >= 2) AND ("selfmod.raidthreshold" <= 50)`),
 				columnNames: ['"selfmod.raidthreshold"'],
 				expression: /* sql */ `("selfmod.raidthreshold" >= 2) AND ("selfmod.raidthreshold" <= 50)`
-			}),
-			new TableCheck({
-				name: this.generateCheckName(/* sql */ `"no-mention-spam.mentionsAllowed" >= 0`),
-				columnNames: ['"no-mention-spam.mentionsAllowed"'],
-				expression: /* sql */ `"no-mention-spam.mentionsAllowed" >= 0`
-			}),
-			new TableCheck({
-				name: this.generateCheckName(/* sql */ `"no-mention-spam.timePeriod" >= 0`),
-				columnNames: ['"no-mention-spam.timePeriod"'],
-				expression: /* sql */ `"no-mention-spam.timePeriod" >= 0`
 			})
 		]);
 	}
