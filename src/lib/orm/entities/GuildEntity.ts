@@ -1,5 +1,4 @@
 import type {
-	RecruitmentQuestions,
 	CustomCommand,
 	DisabledCommandChannel,
 	PermissionsNode,
@@ -482,9 +481,6 @@ export class GuildEntity extends BaseEntity {
 
 	@Column('varchar', { name: 'recruitment.recruitMessage', nullable: true, length: 19 })
 	public recruitMessage?: string | null;
-
-	@Column('simple-json', { name: 'recruitment.questions', array: true, default: () => 'ARRAY[]::JSON[]' })
-	public recruitmentQuestions: RecruitmentQuestions[] = [];
 
 	@Column('varchar', { name: 'starboard.channel', nullable: true, length: 19 })
 	public starboardChannel?: string | null;
