@@ -2,7 +2,7 @@ version: '2.4'
 services:
   postgres:
     container_name: pgsql
-    image: skyrabot/postgres:main
+    image: skyrabot/postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: 'changemepls'
