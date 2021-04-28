@@ -188,7 +188,6 @@ export default Client.defaultGuildSchema
 			.add('viewerRole', 'Role')
 			.add('emoji', 'String', { default: '%E2%98%91%EF%B8%8F', configurable: false })
 			.add('recruitMessage', 'String')
-			.add('questions', 'RecruitmentQuestions', { array: true, configurable: false })
 	)
 	.add('starboard', (folder) =>
 		folder
